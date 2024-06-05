@@ -13063,6 +13063,7 @@ pre .entity {
   color: #fdfffc;
   margin-top: 40px;
   border-radius: 5px;
+  border: 2px solid #fdfffc;
   cursor: pointer;
   transition: 0.5s;
 }
@@ -13072,6 +13073,7 @@ pre .entity {
 .service .service-detail .service-detail-button:hover {
   color: #303a5f;
   background-color: transparent;
+  border: 2px solid #303a5f;
 }
 .service .service-detail .service-detail-button:hover * {
   color: #303a5f;
@@ -13236,7 +13238,7 @@ pre .entity {
 .service-price .service-price-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .service-price .service-price-item {
   display: flex;
