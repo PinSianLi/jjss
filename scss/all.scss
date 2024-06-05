@@ -1,0 +1,46 @@
+@import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "./highlight.scss";
+@import "./_variables.scss";
+@import "./_partial/header.scss";
+@import "./_partial/footer.scss";
+@import "./_partial/product.scss";
+@import "./_partial/blog.scss";
+@import "./_partial/home.scss";
+@import "./_partial/service.scss";
+@import "./_partial/about.scss";
+@import "./package/swiper.scss";
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: $colors-second;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $colors-main;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $colors-main;
+}
+
+body * {
+    font-family: "Noto Sans", sans-serif;
+    list-style: none;
+    box-sizing: border-box;
+    background-color: $colors-main;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+body,
+html {
+    background-color: nth($colors, 9);
+}

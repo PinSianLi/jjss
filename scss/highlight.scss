@@ -1,0 +1,259 @@
+/* Variables */
+$highlight-background: #2d2d2d;
+$highlight-current-line: #393939;
+$highlight-selection: #515151;
+$highlight-foreground: #cccccc;
+$highlight-comment: #999999;
+$highlight-red: #f2777a;
+$highlight-orange: #f99157;
+$highlight-yellow: #ffcc66;
+$highlight-green: #99cc99;
+$highlight-aqua: #66cccc;
+$highlight-blue: #6699cc;
+$highlight-purple: #cc99cc;
+$line-numbers-color: #666;
+$line-numbers-font-size: 0.85em;
+$font-mono: monospace;
+$font-sans: sans-serif;
+$border-color: #515151;
+$article-padding: 20px;
+
+/* Base styles for the code block */
+.code-block {
+    background: $highlight-background;
+    border-style: solid;
+    border-color: $border-color;
+    border-width: 1px 0;
+    overflow: auto;
+    color: $highlight-foreground;
+    line-height: 2;
+}
+
+/* Line numbers */
+.line-numbers {
+    color: $line-numbers-color;
+    font-size: $line-numbers-font-size;
+}
+
+/* Article entry styling */
+.article-entry {
+    figure {
+        margin: 0;
+    }
+
+    pre,
+    code {
+        font-family: $font-mono;
+    }
+
+    code {
+        background: $highlight-background;
+        color: $highlight-foreground;
+        text-shadow: 0 1px #fff;
+        padding: 0 0.3em;
+        border-radius: 0.25rem;
+    }
+
+    pre {
+        background: $highlight-background;
+        border-style: solid;
+        border-color: $border-color;
+        border-width: 1px 0;
+        overflow: auto;
+        color: $highlight-foreground;
+        line-height: 2;
+
+        code {
+            background: none;
+            text-shadow: none;
+            padding: 0;
+        }
+    }
+
+    .highlight {
+        background: $highlight-background;
+        border-style: solid;
+        border-color: $border-color;
+        border-width: 1px 0;
+        overflow: auto;
+        color: $highlight-foreground;
+        line-height: 2;
+
+        pre {
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            margin: 0;
+            width: auto;
+        }
+
+        td {
+            border: none;
+            padding: 0;
+        }
+
+
+
+        figcaption {
+            font-size: 0.85em;
+            color: $highlight-comment;
+            line-height: 2;
+            margin-bottom: 1em;
+
+            a {
+                float: right;
+            }
+        }
+
+        .gutter {
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+
+            pre {
+                color: $line-numbers-color;
+                font-size: $line-numbers-font-size;
+                text-align: right;
+                padding-right: 20px;
+                padding-left: 20px;
+            }
+        }
+
+        .line {
+            height: 1.6em;
+            background-color: transparent;
+        }
+
+        .line.marked {
+            background: $highlight-selection;
+        }
+    }
+
+    .gist {
+
+        border-style: solid;
+        border-color: $border-color;
+        border-width: 1px 0;
+        background: $highlight-background;
+        padding: 15px $article-padding 15px 0;
+
+        .gist-file {
+            border: none;
+            font-family: $font-mono;
+            margin: 0;
+
+            .gist-data {
+                background: none;
+                border: none;
+
+                .line-numbers {
+                    color: $line-numbers-color;
+                    font-size: $line-numbers-font-size;
+                    background: none;
+                    border: none;
+                    padding: 0 20px 0 0;
+                }
+
+                .line-data {
+                    padding: 0 !important;
+                }
+            }
+
+            .highlight {
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+
+            .gist-meta {
+                background: $highlight-background;
+                color: $highlight-comment;
+                font: 0.85em $font-sans;
+                text-shadow: 0 0;
+                padding: 0;
+                margin-top: 1em;
+                margin-left: $article-padding;
+
+                a {
+                    color: $highlight-blue;
+                    font-weight: normal;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Syntax Highlighting */
+pre {
+    span {
+        background-color: transparent;
+    }
+
+    .comment,
+    .prolog,
+    .doctype,
+    .cdata {
+        color: $highlight-comment;
+    }
+
+    .punctuation {
+        color: $highlight-foreground;
+    }
+
+    .property,
+    .tag,
+    .boolean,
+    .number,
+    .constant,
+    .symbol,
+    .deleted {
+        color: $highlight-red;
+    }
+
+    .selector,
+    .attr-name,
+    .string,
+    .char,
+    .builtin,
+    .inserted {
+        color: $highlight-green;
+    }
+
+    .operator,
+    .entity,
+    .url {
+        color: $highlight-aqua;
+    }
+
+    .atrule,
+    .attr-value,
+    .keyword {
+        color: $highlight-blue;
+    }
+
+    .regex,
+    .important {
+        color: $highlight-orange;
+    }
+
+    .important,
+    .bold {
+        font-weight: bold;
+    }
+
+    .italic {
+        font-style: italic;
+    }
+
+    .entity {
+        cursor: help;
+    }
+}

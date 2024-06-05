@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  
+  
+<link rel="stylesheet" href="/jjss/css/all.min.css">
+
+  
+  <title>使用 Hexo 撰寫文章並部署到 GitHub Pages | 唧唧鼠鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1. 安裝 Node.js 和 nvm1.1 官方網站你可以從 Node.js 官方網站 下載並安裝 Node.js。為了更方便地管理 Node.js 版本，我們推薦使用 nvm (Node Version Manager)。 1.2 安裝 nvm你可以從 nvm 官方網站 獲取更多資訊。以下是兩種安裝 nvm 的方式： 方式一：使用 cURL 安裝打開終端並運行以下命令： 1curl -o- h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Hexo 撰寫文章並部署到 GitHub Pages">
+<meta property="og:url" content="https://pinsianli.github.io/jjss/2024/05/14/%E4%BD%BF%E7%94%A8-Hexo-%E6%92%B0%E5%AF%AB%E6%96%87%E7%AB%A0%E4%B8%A6%E9%83%A8%E7%BD%B2%E5%88%B0-GitHub-Pages/index.html">
+<meta property="og:site_name" content="唧唧鼠鼠">
+<meta property="og:description" content="1. 安裝 Node.js 和 nvm1.1 官方網站你可以從 Node.js 官方網站 下載並安裝 Node.js。為了更方便地管理 Node.js 版本，我們推薦使用 nvm (Node Version Manager)。 1.2 安裝 nvm你可以從 nvm 官方網站 獲取更多資訊。以下是兩種安裝 nvm 的方式： 方式一：使用 cURL 安裝打開終端並運行以下命令： 1curl -o- h">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-05-14T12:18:57.000Z">
+<meta property="article:modified_time" content="2024-06-05T06:26:00.252Z">
+<meta property="article:author" content="李品賢(PinSian,Li),Oliver">
+<meta property="article:tag" content="技術">
+<meta property="article:tag" content="網頁">
+<meta property="article:tag" content="部落格">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/jjss/atom.xml" title="唧唧鼠鼠" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/jjss/images/logo.svg">
+  
+  
+  
+  
+    
+<link rel="stylesheet" href="/jjss/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+  <body>
+    <div id="container">
+      <div id="headerTag" class="container-fluid">
+  <div class="container-md">
+    <div class="row justify-content-around align-items-center g-2">
+
+      <div id="logo" class="col-12 col-md-2 col-lg-3">
+        <a href="/jjss/">
+          <img
+            src="/jjss/images/logo.svg"
+            alt="">
+        </a>
+        <svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M1.66667 20C1.19444 20 0.798611 19.8403 0.479167 19.5208C0.159722 19.2014 0 18.8056 0 18.3333C0 17.8611 0.159722 17.4653 0.479167 17.1458C0.798611 16.8264 1.19444 16.6667 1.66667 16.6667H28.3333C28.8056 16.6667 29.2014 16.8264 29.5208 17.1458C29.8403 17.4653 30 17.8611 30 18.3333C30 18.8056 29.8403 19.2014 29.5208 19.5208C29.2014 19.8403 28.8056 20 28.3333 20H1.66667ZM1.66667 11.6667C1.19444 11.6667 0.798611 11.5069 0.479167 11.1875C0.159722 10.8681 0 10.4722 0 10C0 9.52778 0.159722 9.13194 0.479167 8.8125C0.798611 8.49306 1.19444 8.33333 1.66667 8.33333H28.3333C28.8056 8.33333 29.2014 8.49306 29.5208 8.8125C29.8403 9.13194 30 9.52778 30 10C30 10.4722 29.8403 10.8681 29.5208 11.1875C29.2014 11.5069 28.8056 11.6667 28.3333 11.6667H1.66667ZM1.66667 3.33333C1.19444 3.33333 0.798611 3.17361 0.479167 2.85417C0.159722 2.53472 0 2.13889 0 1.66667C0 1.19444 0.159722 0.798611 0.479167 0.479167C0.798611 0.159722 1.19444 0 1.66667 0H28.3333C28.8056 0 29.2014 0.159722 29.5208 0.479167C29.8403 0.798611 30 1.19444 30 1.66667C30 2.13889 29.8403 2.53472 29.5208 2.85417C29.2014 3.17361 28.8056 3.33333 28.3333 3.33333H1.66667Z"
+            fill="white" />
+        </svg>
+      </div>
+      <div id="menu" class="col-12 col-md-10 col-lg-9 d-md-block">
+        <ul class="d-flex justify-content-start">
+          
+            <li>
+              <a href="/jjss/">
+                首頁
+              </a>
+            </li>
+            
+            <li>
+              <a href="/jjss/service">
+                服務項目
+              </a>
+            </li>
+            
+            <li>
+              <a href="/jjss/archives">
+                部落格
+              </a>
+            </li>
+            
+            <li>
+              <a href="/jjss/about">
+                關於我
+              </a>
+            </li>
+            
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        <div id="wrap">
+
+          <section id="main">
+  <div class="container article-main">
+    <div class="row flex-column-reverse flex-lg-row">
+      <div class="col-12 col-lg-9">
+        <article id="post-使用-Hexo-撰寫文章並部署到-GitHub-Pages" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+          <div class="article-meta">
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/jjss/categories/%E6%8A%80%E8%A1%93/">技術</a>
+  </div>
+
+            <div class="archive-article-date">
+              <a href="/jjss/2024/05/14/%E4%BD%BF%E7%94%A8-Hexo-%E6%92%B0%E5%AF%AB%E6%96%87%E7%AB%A0%E4%B8%A6%E9%83%A8%E7%BD%B2%E5%88%B0-GitHub-Pages/">
+                <time class="dt-published" datetime="2024-05-14T12:18:57.000Z" itemprop="datePublished">2024/05/14</time>
+                發布
+              </a>
+            </div>
+          </div>
+          <div class="article-inner">
+            
+            
+              <header class="article-header">
+                
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      使用 Hexo 撰寫文章並部署到 GitHub Pages
+    </h1>
+    <h4 class="p-name article-subtitle"></h4>
+  
+
+              </header>
+            
+            <div class="e-content article-entry" itemprop="articleBody">
+              
+                <h2 id="1-安裝-Node-js-和-nvm"><a href="#1-安裝-Node-js-和-nvm" class="headerlink" title="1. 安裝 Node.js 和 nvm"></a>1. 安裝 Node.js 和 nvm</h2><h3 id="1-1-官方網站"><a href="#1-1-官方網站" class="headerlink" title="1.1 官方網站"></a>1.1 官方網站</h3><p>你可以從 <a target="_blank" rel="noopener" href="https://nodejs.org/">Node.js 官方網站</a> 下載並安裝 Node.js。為了更方便地管理 Node.js 版本，我們推薦使用 nvm (Node Version Manager)。</p>
+<h3 id="1-2-安裝-nvm"><a href="#1-2-安裝-nvm" class="headerlink" title="1.2 安裝 nvm"></a>1.2 安裝 nvm</h3><p>你可以從 <a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm">nvm 官方網站</a> 獲取更多資訊。以下是兩種安裝 nvm 的方式：</p>
+<h4 id="方式一：使用-cURL-安裝"><a href="#方式一：使用-cURL-安裝" class="headerlink" title="方式一：使用 cURL 安裝"></a>方式一：使用 cURL 安裝</h4><p>打開終端並運行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<h4 id="方式二：使用-Wget-安裝"><a href="#方式二：使用-Wget-安裝" class="headerlink" title="方式二：使用 Wget 安裝"></a>方式二：使用 Wget 安裝</h4><p>打開終端並運行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<p>安裝完成後，重新啟動終端或運行以下命令以加載 nvm：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="subst">$([ -z <span class="string">&quot;<span class="variable">$&#123;XDG_CONFIG_HOME-&#125;</span>&quot;</span> ] &amp;&amp; printf %s <span class="string">&quot;<span class="variable">$&#123;HOME&#125;</span>/.nvm&quot;</span> || printf %s <span class="string">&quot;<span class="variable">$&#123;XDG_CONFIG_HOME&#125;</span>/nvm&quot;</span>)</span>&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-安裝-Node-js"><a href="#1-3-安裝-Node-js" class="headerlink" title="1.3 安裝 Node.js"></a>1.3 安裝 Node.js</h3><p>使用 nvm 安裝最新的 Node.js 版本：</p>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install node</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p>你也可以安裝特定版本，例如：</p>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install 20</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p>安裝完成後，確認 Node.js 和 npm 是否安裝成功：</p>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h2 id="2-安裝-Hexo-CLI"><a href="#2-安裝-Hexo-CLI" class="headerlink" title="2. 安裝 Hexo CLI"></a>2. 安裝 Hexo CLI</h2><p>接下來，我們安裝 Hexo CLI：</p>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h2 id="3-初始化-Hexo"><a href="#3-初始化-Hexo" class="headerlink" title="3. 初始化 Hexo"></a>3. 初始化 Hexo</h2><p>選擇一個目錄來存放你的博客，然後在該目錄下運行以下命令來初始化 Hexo：</p>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h2 id="4-撰寫文章"><a href="#4-撰寫文章" class="headerlink" title="4. 撰寫文章"></a>4. 撰寫文章</h2><p>使用以下命令來創建新文章：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post <span class="string">&quot;你的文章標題&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>這會在 <code>source/_posts</code> 目錄下創建一個新的 Markdown 文件，你可以用喜歡的編輯器打開並編輯它。</p>
+<h2 id="5-本地預覽"><a href="#5-本地預覽" class="headerlink" title="5. 本地預覽"></a>5. 本地預覽</h2><p>在部署之前，可以使用以下命令來預覽你的博客：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>這會啟動一個本地服務器，打開瀏覽器並訪問 <code>http://localhost:4000</code> 就可以看到你的博客了。</p>
+<h2 id="6-部署到-GitHub-Pages"><a href="#6-部署到-GitHub-Pages" class="headerlink" title="6. 部署到 GitHub Pages"></a>6. 部署到 GitHub Pages</h2><p>首先，配置 <code>_config.yml</code> 文件，添加 GitHub Pages 的相關設置。找到並編輯以下部分：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/yourusername/yourrepository.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
+
+<p>然後，安裝 hexo-deployer-git 插件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>最後，運行以下命令來生成靜態文件並部署到 GitHub Pages：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-自動化部署（可選）"><a href="#7-自動化部署（可選）" class="headerlink" title="7. 自動化部署（可選）"></a>7. 自動化部署（可選）</h2><p>如果你希望自動化部署流程，可以考慮使用 GitHub Actions。創建一個名為 <code>.github/workflows/deploy.yml</code> 的文件，內容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">Hexo</span> <span class="string">to</span> <span class="string">GitHub</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">deploy:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">Node.js</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/setup-node@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">node-version:</span> <span class="string">&#x27;20&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">Hexo</span> <span class="string">and</span> <span class="string">dependencies</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        npm install hexo-cli -g</span></span><br><span class="line"><span class="string">        npm install</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        hexo generate</span></span><br><span class="line"><span class="string">        hexo deploy</span></span><br><span class="line"><span class="string"></span>      <span class="attr">env:</span></span><br><span class="line">        <span class="attr">GITHUB_TOKEN:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITHUB_TOKEN</span> <span class="string">&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣，每當你推送到 main 分支時，GitHub Actions 會自動部署你的博客到 GitHub Pages。</p>
+
+              
+            </div>
+            
+          </div>
+        </article>
+      </div>
+      <div class="col-12 col-lg-3 sidebar-widget-box">
+        
+          <div class="sidebar-widget-wrap">
+            <div class="sidebar-widget">
+              <ul class="category-list">
+                  <li class="sidebar-widget-title"><a class="category-list-link on" href="/jjss/archives">全部文章</a></li>
+                
+                  <li class="category-list-item">
+                      <a class="category-list-link" href="/jjss/categories/%E6%8A%80%E8%A1%93/">技術</a>
+                  </li>
+                
+              </ul>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <footer class="article-footer">
+          
+          <h2 class="article-footer-title">相關文章</h2>
+          <ul class="article-footer-post">
+            
+            
+          </ul>
+        </footer>
+      </div>
+    </div>
+  </div>  
+</section>
+          <div id="footer" class="container-full">
+  <div class="container d-flex justify-content-between  align-items-center flex-md-row flex-column">
+    <div class="footerContact">
+      <div class="footerLogo">
+        <a href="">
+          <img src="/jjss/images/logo.svg"
+          alt=""
+          width="80">
+        </a>
+      </div>
+      <div class="footerDetails">
+        <p>若有網站開發或AI繪圖相關問題 <br>歡迎直接與我聯絡！</p>
+
+      </div>
+      <p class="email"></p>
+    </div>
+    <ul class="footerLinkList">
+      <li class="d-flex justify-content-start align-items-center">
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/tastefants/" class="d-flex justify-content-start align-items-center">
+          <svg width="38" height="38" viewBox="0 0 38 38" fill="none" style="padding: 9px;"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M11.02 0H26.98C33.06 0 38 4.94 38 11.02V26.98C38 29.9027 36.839 32.7057 34.7723 34.7723C32.7057 36.839 29.9027 38 26.98 38H11.02C4.94 38 0 33.06 0 26.98V11.02C0 8.09731 1.16103 5.29433 3.22768 3.22768C5.29433 1.16103 8.09731 0 11.02 0ZM10.64 3.8C8.82592 3.8 7.08614 4.52064 5.80339 5.80339C4.52064 7.08614 3.8 8.82592 3.8 10.64V27.36C3.8 31.141 6.859 34.2 10.64 34.2H27.36C29.1741 34.2 30.9139 33.4794 32.1966 32.1966C33.4794 30.9139 34.2 29.1741 34.2 27.36V10.64C34.2 6.859 31.141 3.8 27.36 3.8H10.64ZM28.975 6.65C29.6049 6.65 30.209 6.90022 30.6544 7.34562C31.0998 7.79102 31.35 8.39511 31.35 9.025C31.35 9.65489 31.0998 10.259 30.6544 10.7044C30.209 11.1498 29.6049 11.4 28.975 11.4C28.3451 11.4 27.741 11.1498 27.2956 10.7044C26.8502 10.259 26.6 9.65489 26.6 9.025C26.6 8.39511 26.8502 7.79102 27.2956 7.34562C27.741 6.90022 28.3451 6.65 28.975 6.65ZM19 9.5C21.5196 9.5 23.9359 10.5009 25.7175 12.2825C27.4991 14.0641 28.5 16.4804 28.5 19C28.5 21.5196 27.4991 23.9359 25.7175 25.7175C23.9359 27.4991 21.5196 28.5 19 28.5C16.4804 28.5 14.0641 27.4991 12.2825 25.7175C10.5009 23.9359 9.5 21.5196 9.5 19C9.5 16.4804 10.5009 14.0641 12.2825 12.2825C14.0641 10.5009 16.4804 9.5 19 9.5ZM19 13.3C17.4883 13.3 16.0384 13.9005 14.9695 14.9695C13.9005 16.0384 13.3 17.4883 13.3 19C13.3 20.5117 13.9005 21.9616 14.9695 23.0305C16.0384 24.0995 17.4883 24.7 19 24.7C20.5117 24.7 21.9616 24.0995 23.0305 23.0305C24.0995 21.9616 24.7 20.5117 24.7 19C24.7 17.4883 24.0995 16.0384 23.0305 14.9695C21.9616 13.9005 20.5117 13.3 19 13.3Z" />
+          </svg>
+          <span>美食鼠鼠</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+        </div>
+        
+
+
+<script src="/jjss/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/jjss/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/jjss/js/script.js"></script>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    </div>
+    
+<script src="/jjss/js/swiper-bundle.min.js"></script>
+
+    
+<script src="/jjss/js/app.js"></script>
+
+  </body>
+
+</html>
