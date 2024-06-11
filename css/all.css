@@ -12220,13 +12220,11 @@ pre .entity {
   left: 0;
   top: 0;
   border-width: 2px 0 0 2px;
-  border-radius: 2px;
 }
 #headerTag #menu ul li a::after {
   right: 0;
   bottom: 0;
   border-width: 0 2px 2px 0;
-  border-radius: 2px;
 }
 #headerTag #menu ul li.action a,
 #headerTag #menu ul li:hover a {
@@ -12250,6 +12248,7 @@ pre .entity {
   border-color: #919191;
   transition: 0.5s;
   opacity: 1;
+  border-radius: 2px;
 }
 #headerTag #menu ul li::before,
 #headerTag #menu ul li::after {
