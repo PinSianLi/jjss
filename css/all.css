@@ -12220,11 +12220,13 @@ pre .entity {
   left: 0;
   top: 0;
   border-width: 2px 0 0 2px;
+  border-radius: 2px;
 }
 #headerTag #menu ul li a::after {
   right: 0;
   bottom: 0;
   border-width: 0 2px 2px 0;
+  border-radius: 2px;
 }
 #headerTag #menu ul li.action a,
 #headerTag #menu ul li:hover a {
@@ -13603,7 +13605,8 @@ pre .entity {
 }
 
 body * {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Klee One", sans-serif;
+  font-weight: 400;
   list-style: none;
   box-sizing: border-box;
   background-color: #303a5f;
