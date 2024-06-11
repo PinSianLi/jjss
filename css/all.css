@@ -12879,6 +12879,9 @@ pre .entity {
   background-color: #3B3B3B;
   border-radius: 16px;
 }
+.article-footer .article-footer-post-tag-list-item a {
+  background-color: transparent;
+}
 
 .article-main {
   margin-top: 120px;
