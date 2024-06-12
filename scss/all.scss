@@ -39,9 +39,12 @@ body * {
     a {
         text-decoration: none;
     }
+
 }
 
-body,
-html {
+body{
     background-color: nth($colors, 9);
+    b, strong{
+        font-weight: bolder;
+    }
 }

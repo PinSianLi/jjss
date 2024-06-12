@@ -13617,7 +13617,9 @@ body * a {
   text-decoration: none;
 }
 
-body,
-html {
+body {
   background-color: #000;
+}
+body b, body strong {
+  font-weight: bolder;
 }
