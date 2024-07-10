@@ -12647,6 +12647,7 @@ pre .entity {
 .h-entry h6,
 .h-entry .h6,
 .h-entry p,
+.h-entry li,
 .e-content h1,
 .e-content .h1,
 .e-content h2,
@@ -12659,8 +12660,10 @@ pre .entity {
 .e-content .h5,
 .e-content h6,
 .e-content .h6,
-.e-content p {
+.e-content p,
+.e-content li {
   color: #F1F1F1;
+  margin-bottom: 0.5rem;
 }
 .h-entry h1, .h-entry .h1,
 .h-entry h2,
