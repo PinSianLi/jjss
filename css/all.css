@@ -13513,6 +13513,10 @@ pre .entity {
   background: #303a5f;
 }
 
+html {
+  background-color: #303a5f;
+}
+
 body * {
   font-family: "Klee One", sans-serif;
   font-weight: 400;
@@ -13527,6 +13531,7 @@ body * a {
 body {
   background-color: #000;
 }
-body b, body strong {
+body b,
+body strong {
   font-weight: bolder;
 }

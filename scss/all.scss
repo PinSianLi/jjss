@@ -29,6 +29,10 @@
     background: $colors-main;
 }
 
+html {
+    background-color: $colors-main;
+}
+
 body * {
     font-family: "Klee One", sans-serif;
     font-weight: 400;
@@ -42,9 +46,11 @@ body * {
 
 }
 
-body{
+body {
     background-color: nth($colors, 9);
-    b, strong{
+
+    b,
+    strong {
         font-weight: bolder;
     }
 }
