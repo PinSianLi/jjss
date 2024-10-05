@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9C0PEBC8T9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9C0PEBC8T9');
+</script>
+<!-- End Google Analytics -->
+
+  
+<link rel="stylesheet" href="/css/all.min.css">
+
+  
+  <title>年金與利率計算公式 | 唧唧鼠鼠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="年金與利率計算公式這篇文章將介紹年金終值、年金現值、單利與複利的公式，並以簡單易懂的比喻來說明它們的應用情境。希望能幫助你理解這些金融公式在現實中的具體用途。  1. 年金終值公式比喻：種一棵樹，等它長大想像你每年種一棵樹（每年固定存一筆錢），你希望在 10 年後能有一片小樹林（累積總金額）。年金終值公式就是告訴你 10 年後你會有多少棵樹（「終值金額」）。 公式：$$FV">
+<meta property="og:type" content="article">
+<meta property="og:title" content="年金與利率計算公式">
+<meta property="og:url" content="https://jjss.one/2024/10/05/%E5%B9%B4%E9%87%91%E8%88%87%E5%88%A9%E7%8E%87%E8%A8%88%E7%AE%97%E5%85%AC%E5%BC%8F/index.html">
+<meta property="og:site_name" content="唧唧鼠鼠">
+<meta property="og:description" content="年金與利率計算公式這篇文章將介紹年金終值、年金現值、單利與複利的公式，並以簡單易懂的比喻來說明它們的應用情境。希望能幫助你理解這些金融公式在現實中的具體用途。  1. 年金終值公式比喻：種一棵樹，等它長大想像你每年種一棵樹（每年固定存一筆錢），你希望在 10 年後能有一片小樹林（累積總金額）。年金終值公式就是告訴你 10 年後你會有多少棵樹（「終值金額」）。 公式：$$FV">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/jjss-one.appspot.com/o/FSN%2FAnnuity%20and%20Interest%20Rate%20Calculation%20Formulas%2Fpost_img.webp?alt=media&token=77072ee9-8706-493d-8d04-2d92c5295101">
+<meta property="article:published_time" content="2024-10-05T10:08:33.000Z">
+<meta property="article:modified_time" content="2024-10-05T10:17:06.570Z">
+<meta property="article:author" content="李品賢(PinSian,Li),Oliver">
+<meta property="article:tag" content="年金">
+<meta property="article:tag" content="利率">
+<meta property="article:tag" content="單利">
+<meta property="article:tag" content="複利">
+<meta property="article:tag" content="退休">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/jjss-one.appspot.com/o/FSN%2FAnnuity%20and%20Interest%20Rate%20Calculation%20Formulas%2Fpost_img.webp?alt=media&token=77072ee9-8706-493d-8d04-2d92c5295101">
+  
+    <link rel="alternate" href="/atom.xml" title="唧唧鼠鼠" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/images/logo.svg">
+  
+  
+  
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+  <body>
+    <div id="container">
+        
+          <div id="headerTag" class="container-fluid">
+  <div class="container-md">
+    <div class="row justify-content-around align-items-center g-2">
+
+      <div id="logo" class="col-12 col-md-2 col-lg-3">
+        <a href="/">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/jjss-one.appspot.com/o/logo.svg?alt=media&token=f0b259bd-387d-47aa-8986-bf2d502a65e5"
+            alt="">
+        </a>
+        <svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M1.66667 20C1.19444 20 0.798611 19.8403 0.479167 19.5208C0.159722 19.2014 0 18.8056 0 18.3333C0 17.8611 0.159722 17.4653 0.479167 17.1458C0.798611 16.8264 1.19444 16.6667 1.66667 16.6667H28.3333C28.8056 16.6667 29.2014 16.8264 29.5208 17.1458C29.8403 17.4653 30 17.8611 30 18.3333C30 18.8056 29.8403 19.2014 29.5208 19.5208C29.2014 19.8403 28.8056 20 28.3333 20H1.66667ZM1.66667 11.6667C1.19444 11.6667 0.798611 11.5069 0.479167 11.1875C0.159722 10.8681 0 10.4722 0 10C0 9.52778 0.159722 9.13194 0.479167 8.8125C0.798611 8.49306 1.19444 8.33333 1.66667 8.33333H28.3333C28.8056 8.33333 29.2014 8.49306 29.5208 8.8125C29.8403 9.13194 30 9.52778 30 10C30 10.4722 29.8403 10.8681 29.5208 11.1875C29.2014 11.5069 28.8056 11.6667 28.3333 11.6667H1.66667ZM1.66667 3.33333C1.19444 3.33333 0.798611 3.17361 0.479167 2.85417C0.159722 2.53472 0 2.13889 0 1.66667C0 1.19444 0.159722 0.798611 0.479167 0.479167C0.798611 0.159722 1.19444 0 1.66667 0H28.3333C28.8056 0 29.2014 0.159722 29.5208 0.479167C29.8403 0.798611 30 1.19444 30 1.66667C30 2.13889 29.8403 2.53472 29.5208 2.85417C29.2014 3.17361 28.8056 3.33333 28.3333 3.33333H1.66667Z"
+            fill="white" />
+        </svg>
+      </div>
+      <div id="menu" class="col-12 col-md-10 col-lg-9 d-md-block">
+        <ul class="d-flex justify-content-start">
+          
+            <li>
+              <a href="/">
+                首頁
+              </a>
+            </li>
+            
+            <li>
+              <a href="/archives">
+                部落格
+              </a>
+            </li>
+            
+            <li>
+              <a href="/service">
+                服務項目
+              </a>
+            </li>
+            
+            <li>
+              <a href="/about">
+                關於我
+              </a>
+            </li>
+            
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+        
+          
+
+            <div id="wrap">
+
+              <section id="main">
+  <div class="container article-main">
+    <div class="row flex-column-reverse flex-lg-row">
+      <div class="col-12 col-lg-9">
+        <article id="post-年金與利率計算公式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+          <div class="article-meta">
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%B2%A1%E9%87%91%E7%AD%86%E8%A8%98/">財金筆記</a>
+  </div>
+
+            <div class="archive-article-date">
+              <a href="/2024/10/05/%E5%B9%B4%E9%87%91%E8%88%87%E5%88%A9%E7%8E%87%E8%A8%88%E7%AE%97%E5%85%AC%E5%BC%8F/">
+                <time class="dt-published" datetime="2024-10-05T10:08:33.000Z" itemprop="datePublished">2024/10/5</time>
+                發布
+              </a>
+            </div>
+          </div>
+          <div class="article-inner">
+            
+            
+              <header class="article-header">
+                
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      年金與利率計算公式
+    </h1>
+    <h4 class="p-name article-subtitle"></h4>
+  
+
+              </header>
+            
+            <div class="e-content article-entry" itemprop="articleBody">
+              
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;justify-content: center;">
+    <img 
+    src="https://firebasestorage.googleapis.com/v0/b/jjss-one.appspot.com/o/FSN%2FAnnuity%20and%20Interest%20Rate%20Calculation%20Formulas%2Fpost_img.webp?alt=media&token=77072ee9-8706-493d-8d04-2d92c5295101" 
+    style="width: 100%;border-radius: 5px;">
+</div>
+
+<br>
+<br>
+
+
+<h1 id="年金與利率計算公式"><a href="#年金與利率計算公式" class="headerlink" title="年金與利率計算公式"></a>年金與利率計算公式</h1><p>這篇文章將介紹年金終值、年金現值、單利與複利的公式，並以簡單易懂的比喻來說明它們的應用情境。希望能幫助你理解這些金融公式在現實中的具體用途。</p>
+<hr>
+<h2 id="1-年金終值公式"><a href="#1-年金終值公式" class="headerlink" title="1. 年金終值公式"></a>1. 年金終值公式</h2><h3 id="比喻：種一棵樹，等它長大"><a href="#比喻：種一棵樹，等它長大" class="headerlink" title="比喻：種一棵樹，等它長大"></a>比喻：種一棵樹，等它長大</h3><p>想像你每年種一棵樹（每年固定存一筆錢），你希望在 10 年後能有一片小樹林（累積總金額）。年金終值公式就是告訴你 10 年後你會有多少棵樹（「終值金額」）。</p>
+<h3 id="公式："><a href="#公式：" class="headerlink" title="公式："></a>公式：</h3><p>$$<br>FV_{A_n} &#x3D; PMT \times \frac{(1+i)^n - 1}{i}<br>$$</p>
+<ul>
+<li><strong>FV</strong>：<code>Future Value</code>，年金的<strong>終值</strong>。就是所有樹都長大後的總數，或每次存錢後 10 年累積的總金額。</li>
+<li><strong>PMT</strong>：<code>Payment</code>，<strong>每次固定存的金額</strong>（每期付款額）。比喻為每年種的樹或每月存進去的錢。</li>
+<li><strong>i</strong>：<strong>每期利率</strong>。想像它是樹每年長大的速度。如果年利率是 5%（即 <code>i = 0.05</code>），代表這棵樹一年能長大 5%。</li>
+<li><strong>n</strong>：<strong>期數</strong>。如果是「年」，那就是「幾年」。如果是「月」，那就是「幾個月」。這告訴你你會種幾棵樹（或存幾次錢）。</li>
+</ul>
+<h3 id="應用練習"><a href="#應用練習" class="headerlink" title="應用練習:"></a>應用練習:</h3><p>例如父母每年固定存 10,000 元到你的教育基金中，等你 10 年後上大學時，他們可以提供多少金額來支付你的學費？</p>
+<hr>
+<h2 id="2-年金現值公式"><a href="#2-年金現值公式" class="headerlink" title="2. 年金現值公式"></a>2. 年金現值公式</h2><h3 id="比喻：拿現在的錢換成未來的禮物"><a href="#比喻：拿現在的錢換成未來的禮物" class="headerlink" title="比喻：拿現在的錢換成未來的禮物"></a>比喻：拿現在的錢換成未來的禮物</h3><p>你每年收到一個聖誕禮物，爸爸告訴你這些禮物的價值都是現在存進去的錢變出來的。年金現值公式就是告訴你，如果你想每年都能收到這些「禮物」，現在需要存多少「錢」。</p>
+<h3 id="公式：-1"><a href="#公式：-1" class="headerlink" title="公式："></a>公式：</h3><p>$$<br>PV_{A_n} &#x3D; PMT \times \left[ \frac{1}{i} - \frac{1}{i(1+i)^n} \right]<br>$$</p>
+<ul>
+<li><strong>PV</strong>：<code>Present Value</code>，<strong>年金的現值</strong>。這表示你現在需要準備多少錢，未來每次才能拿到固定的金額（或每年都能收到一樣多的禮物）。</li>
+<li><strong>PMT</strong>：<strong>每次收到的金額</strong>。這是你希望每年能收到的禮物金額（或者每次固定支付的貸款金額）。</li>
+<li><strong>i</strong>：<strong>每期利率</strong>。想像為「利息」或「錢變大的速度」。如果 <code>i = 0.05</code>，就是每期（每年）有 5% 的利息。</li>
+<li><strong>n</strong>：<strong>期數</strong>。例如「10 年」，就是 10 次禮物。如果是「每月」，那就是 120 個月。</li>
+</ul>
+<h3 id="應用練習-1"><a href="#應用練習-1" class="headerlink" title="應用練習:"></a>應用練習:</h3><p>例如你希望退休後每年都能拿到 50,000 元生活費，那麼你現在要準備多少退休金才能每年穩定拿到這個金額？</p>
+<hr>
+<h2 id="3-單利公式"><a href="#3-單利公式" class="headerlink" title="3. 單利公式"></a>3. 單利公式</h2><h3 id="比喻：爸爸每年給你固定的零用錢"><a href="#比喻：爸爸每年給你固定的零用錢" class="headerlink" title="比喻：爸爸每年給你固定的零用錢"></a>比喻：爸爸每年給你固定的零用錢</h3><p>想像爸爸每年給你 10 元零用錢（利息），如果你保持乖巧，每年都會拿到相同的金額。單利公式告訴你，在 N 年後，你總共會拿到多少零用錢。</p>
+<h3 id="公式：-2"><a href="#公式：-2" class="headerlink" title="公式："></a>公式：</h3><p>$$<br>A &#x3D; P \times (1 + r \times t)<br>$$</p>
+<ul>
+<li><strong>A</strong>：<code>Amount</code>，<strong>未來總額</strong>。這表示 N 年後，你的所有零用錢加在一起有多少。</li>
+<li><strong>P</strong>：<code>Principal</code>，<strong>本金</strong>。這是你最初存的錢（或爸爸最初給你的零用錢）。</li>
+<li><strong>r</strong>：<strong>年利率</strong>。想像為每年爸爸固定給你的零用錢比例。如果 <code>r = 0.05</code>，就是每年給你 5% 的零用錢。</li>
+<li><strong>t</strong>：<strong>時間</strong>。例如 <code>t = 5</code>，表示你總共拿了 5 年的零用錢。</li>
+</ul>
+<h3 id="應用練習-2"><a href="#應用練習-2" class="headerlink" title="應用練習:"></a>應用練習:</h3><p>假設你把 500 元借給朋友，每年收取 5% 的利息，那麼 5 年後總共能得到多少回報？這種計算方式在短期儲蓄或定期收入中很常見。</p>
+<hr>
+<h2 id="4-複利公式"><a href="#4-複利公式" class="headerlink" title="4. 複利公式"></a>4. 複利公式</h2><h3 id="比喻：利息也生利息，像雪球越滾越大"><a href="#比喻：利息也生利息，像雪球越滾越大" class="headerlink" title="比喻：利息也生利息，像雪球越滾越大"></a>比喻：利息也生利息，像雪球越滾越大</h3><p>想像你每年把收到的零用錢（利息）也繼續存下來，明年它又會變成更多的零用錢。這樣零用錢就會越來越多，像滾雪球一樣越滾越大。複利公式告訴你，如果你每年都把收到的零用錢存進去，N 年後你會有多少錢。</p>
+<h3 id="公式：-3"><a href="#公式：-3" class="headerlink" title="公式："></a>公式：</h3><p>$$<br>A &#x3D; P \times (1 + r)^t<br>$$</p>
+<ul>
+<li><strong>A</strong>：<strong>未來總額</strong>。這表示 N 年後，你所有的零用錢變成了多少（或銀行存款最終的金額）。</li>
+<li><strong>P</strong>：<strong>本金</strong>。這是你一開始存的錢。</li>
+<li><strong>r</strong>：<strong>年利率</strong>。如果 <code>r = 0.05</code>，就是每年增加 5% 的利息。</li>
+<li><strong>t</strong>：<strong>年數</strong>。例如 <code>t = 10</code>，表示你存了 10 年。</li>
+</ul>
+<h3 id="應用練習-3"><a href="#應用練習-3" class="headerlink" title="應用練習:"></a>應用練習:</h3><p>假設你每年把收到的 5% 的利息都存回銀行，10 年後，你的存款會變成多少？這個公式常用於長期投資與退休金計劃中，因為它能最大化利息的效果。</p>
+<hr>
+<p>這些公式與應用情境能幫助你理解金融與投資中的常見問題。希望這篇文章能讓你輕鬆掌握年金與利率的計算方式！</p>
+
+              
+            </div>
+            
+          </div>
+        </article>
+      </div>
+      <div class="col-12 col-lg-3 sidebar-widget-box">
+        
+          <div class="sidebar-widget-wrap">
+            <div class="sidebar-widget">
+              <ul class="category-list">
+                  <li class="sidebar-widget-title"><a class="category-list-link on" href="/archives">全部文章</a></li>
+                
+                  <li class="category-list-item">
+                      <a class="category-list-link" href="/categories/%E8%B2%A1%E9%87%91%E7%AD%86%E8%A8%98/">財金筆記</a>
+                  </li>
+                
+                  <li class="category-list-item">
+                      <a class="category-list-link" href="/categories/%E7%B6%B2%E9%A0%81%E6%8A%80%E8%A1%93/">網頁技術</a>
+                  </li>
+                
+                  <li class="category-list-item">
+                      <a class="category-list-link" href="/categories/%E5%9C%96%E5%83%8F%E7%94%9F%E6%88%90/">圖像生成</a>
+                  </li>
+                
+              </ul>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <footer class="article-footer">
+          
+          <h2 class="article-footer-title">相關文章</h2>
+          <ul class="article-footer-post">
+            
+            
+          </ul>
+        </footer>
+      </div>
+    </div>
+  </div>  
+</section>
+              
+                <div id="footer" class="container-full">
+  <div class="container d-flex justify-content-between  align-items-center flex-md-row flex-column">
+    <div class="footerContact">
+      <div class="footerLogo">
+        <a href="">
+          <img src="https://firebasestorage.googleapis.com/v0/b/jjss-one.appspot.com/o/logo.svg?alt=media&token=f0b259bd-387d-47aa-8986-bf2d502a65e5"
+          alt=""
+          width="80">
+        </a>
+      </div>
+      <div class="footerDetails">
+        <p>若有網站開發或AI繪圖相關問題 <br>歡迎直接與我聯絡！</p>
+
+      </div>
+      <p class="email"></p>
+    </div>
+    <ul class="footerLinkList">
+      <li class="d-flex justify-content-start align-items-center">
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/tastefants/" class="d-flex justify-content-start align-items-center">
+          <svg width="38" height="38" viewBox="0 0 38 38" fill="none" style="padding: 9px;"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M11.02 0H26.98C33.06 0 38 4.94 38 11.02V26.98C38 29.9027 36.839 32.7057 34.7723 34.7723C32.7057 36.839 29.9027 38 26.98 38H11.02C4.94 38 0 33.06 0 26.98V11.02C0 8.09731 1.16103 5.29433 3.22768 3.22768C5.29433 1.16103 8.09731 0 11.02 0ZM10.64 3.8C8.82592 3.8 7.08614 4.52064 5.80339 5.80339C4.52064 7.08614 3.8 8.82592 3.8 10.64V27.36C3.8 31.141 6.859 34.2 10.64 34.2H27.36C29.1741 34.2 30.9139 33.4794 32.1966 32.1966C33.4794 30.9139 34.2 29.1741 34.2 27.36V10.64C34.2 6.859 31.141 3.8 27.36 3.8H10.64ZM28.975 6.65C29.6049 6.65 30.209 6.90022 30.6544 7.34562C31.0998 7.79102 31.35 8.39511 31.35 9.025C31.35 9.65489 31.0998 10.259 30.6544 10.7044C30.209 11.1498 29.6049 11.4 28.975 11.4C28.3451 11.4 27.741 11.1498 27.2956 10.7044C26.8502 10.259 26.6 9.65489 26.6 9.025C26.6 8.39511 26.8502 7.79102 27.2956 7.34562C27.741 6.90022 28.3451 6.65 28.975 6.65ZM19 9.5C21.5196 9.5 23.9359 10.5009 25.7175 12.2825C27.4991 14.0641 28.5 16.4804 28.5 19C28.5 21.5196 27.4991 23.9359 25.7175 25.7175C23.9359 27.4991 21.5196 28.5 19 28.5C16.4804 28.5 14.0641 27.4991 12.2825 25.7175C10.5009 23.9359 9.5 21.5196 9.5 19C9.5 16.4804 10.5009 14.0641 12.2825 12.2825C14.0641 10.5009 16.4804 9.5 19 9.5ZM19 13.3C17.4883 13.3 16.0384 13.9005 14.9695 14.9695C13.9005 16.0384 13.3 17.4883 13.3 19C13.3 20.5117 13.9005 21.9616 14.9695 23.0305C16.0384 24.0995 17.4883 24.7 19 24.7C20.5117 24.7 21.9616 24.0995 23.0305 23.0305C24.0995 21.9616 24.7 20.5117 24.7 19C24.7 17.4883 24.0995 16.0384 23.0305 14.9695C21.9616 13.9005 20.5117 13.3 19 13.3Z" />
+          </svg>
+          <span>唧唧鼠鼠</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+              
+            </div>
+            
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    </div>
+    
+<script src="/js/swiper-bundle.min.js"></script>
+
+      
+<script src="/js/app.js"></script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+
+</html>
