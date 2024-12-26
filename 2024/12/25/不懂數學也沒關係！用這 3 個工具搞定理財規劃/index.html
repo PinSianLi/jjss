@@ -34,7 +34,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/jjss-one.appspot.com/o/FSN%2F02%2Fpost_img.webp?alt=media&token=5c7c1840-ff42-4844-a4c7-abbffe408996">
 <meta property="article:published_time" content="2024-12-25T08:13:25.000Z">
-<meta property="article:modified_time" content="2024-12-25T09:31:01.574Z">
+<meta property="article:modified_time" content="2024-12-26T09:48:00.956Z">
 <meta property="article:author" content="李品賢(PinSian,Li),Oliver">
 <meta property="article:tag" content="理財工具">
 <meta property="article:tag" content="財務規劃">
@@ -206,7 +206,7 @@
     </div>
     <div class="col-md-4">
         <label for="rates" class="form-label">年利率 (%，以逗號分隔)</label>
-        <input type="text" class="form-control" id="rates" value="3,5,10" placeholder="例如: 3,5,10" required>
+        <input type="text" class="form-control" id="rates" value="3,5,10" placeholder="例如: 3,5,7" required>
     </div>
     <div class="col-12">
         <button type="button" class="btn btn-primary w-100" onclick="generateRateComparisonChart()">生成圖表</button>
@@ -270,15 +270,15 @@
     <form id="retirementForm" class="row g-3 mb-4">
     <div class="col-md-4">
         <label for="retirementAmount" class="form-label">退休金總額 (元)</label>
-        <input type="number" class="form-control" id="retirementAmount" placeholder="輸入退休金" value="5000000" required>
+        <input type="number" class="form-control" id="retirementAmount" placeholder="輸入退休金" value="1000000" required>
     </div>
     <div class="col-md-4">
         <label for="retirementRate" class="form-label">年利率 (%)</label>
-        <input type="number" class="form-control" id="retirementRate" step="0.01" placeholder="輸入年利率" value="8" required>
+        <input type="number" class="form-control" id="retirementRate" step="0.01" placeholder="輸入年利率" value="5" required>
     </div>
     <div class="col-md-4">
         <label for="withdrawYears" class="form-label">提領年數</label>
-        <input type="number" class="form-control" id="withdrawYears" placeholder="輸入提領年數" value="25" required>
+        <input type="number" class="form-control" id="withdrawYears" placeholder="輸入提領年數" value="20" required>
     </div>
     <div class="col-12">
         <button type="button" class="btn btn-warning w-100" onclick="generateRetirementPlan()">生成規劃</button>
