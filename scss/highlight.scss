@@ -113,6 +113,7 @@ $article-padding: 20px;
             -ms-user-select: none;
             -webkit-user-select: none;
             user-select: none;
+            background: $highlight-background;
 
             pre {
                 color: $line-numbers-color;

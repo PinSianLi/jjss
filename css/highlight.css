@@ -81,6 +81,7 @@
   -ms-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+  background: #2d2d2d;
 }
 .article-entry .highlight .gutter pre {
   color: #666;
