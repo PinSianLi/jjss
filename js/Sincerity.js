@@ -333,7 +333,7 @@ class SincerityApp {
         });
         let title, description;
         if (results.includes('li')) {
-            title = '立 筊'; description = '神跡顯現 · 所求之事非同小可';
+            title = '無 筊'; description = '擲出無筊 · 請重新擲筊';
         } else if ((results[0] === 'yang' && results[1] === 'yin') || (results[0] === 'yin' && results[1] === 'yang')) {
             title = '聖 筊'; description = '神明應允 · 心誠則靈';
         } else if (results[0] === 'yang' && results[1] === 'yang') {
