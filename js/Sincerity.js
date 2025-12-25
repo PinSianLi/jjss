@@ -201,8 +201,6 @@ class SincerityApp {
             
             this.world.createCollider(colliderDesc, body);
         });
-        
-        console.log("🧱 隱形圍牆已建立");
     }
     createJiaoBody(mesh, position, rotationEuler) {
         let rigidBodyDesc = RAPIER.RigidBodyDesc.dynamic()
