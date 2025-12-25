@@ -392,8 +392,8 @@ class SincerityApp {
             }
             const delayTime = 2.0;
             const duration = 2.0;
-            const startCamPos = new THREE.Vector3(0, 60, 20);
-            const endCamPos = new THREE.Vector3(0, 20, 20);
+            const startCamPos = this.getResponsiveCameraPos(true);
+            const endCamPos = this.getResponsiveCameraPos(false);
             const elapsed = (now - this.introStartTime) / 1000;
             let progress = 0;
             if (this.hasPlayedIntro) {
@@ -471,7 +471,49 @@ class SincerityApp {
         }
         this.renderer.render(this.scene, this.camera);
     }
+    // 根據螢幕比例，動態計算最佳相機位置
+    getResponsiveCameraPos(isStart = false) {
+        const aspect = window.innerWidth / window.innerHeight;
+        
+        // 判定標準：寬高比小於 1 代表是「直式螢幕」(手機)
+        const isMobile = aspect < 1;
+
+        // === 電腦版基礎位置 (橫式螢幕用) ===
+        // 起點：高空俯視
+        const desktopStart = new THREE.Vector3(0, 40, 0.1); 
+        // 終點：案上透視 (您原本覺得好看的距離)
+        const desktopEnd   = new THREE.Vector3(0, 25, 50);  
+
+        if (!isMobile) {
+            // 如果是電腦或平板橫拿，直接回傳基礎位置
+            return isStart ? desktopStart : desktopEnd;
+        }
+
+        // === 手機版調整 (直式螢幕用) ===
+        // 因為螢幕變窄，視野(FOV)會被切邊，所以必須把相機「後退」
+        
+        // 計算後退倍率：
+        // 例如 9:16 的手機，aspect 約 0.56，倒數後約為 1.78 倍
+        let zoomFactor = 1 / aspect;
+        
+        // 限制：不要退太遠，最多 1.8 倍，並稍微打個折(0.9)讓畫面飽滿一點
+        zoomFactor = Math.min(zoomFactor, 1.8) * 0.5;
+
+        if (isStart) {
+            // 起點 (高空)：單純拉高，保持俯視感
+            return new THREE.Vector3(0, 40 * zoomFactor, 0.1);
+        } else {
+            // 終點 (案上)：依比例後退 + 拉高
+            return new THREE.Vector3(
+                0, 
+                25 * zoomFactor, // Y軸拉高 (維持俯視角度)
+                40 * zoomFactor  // Z軸拉遠 (這是重點，讓兩側露出來)
+            );
+        }
+    }
 }
+
+
 
 window.addEventListener('resize', () => {
     // 更新相機
