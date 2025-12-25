@@ -163,7 +163,12 @@ class SincerityApp {
      */
     createBoundaries() {
         // 設定「供桌」的範圍大小 (半徑)
-        const range = 6;
+        const aspect = window.innerWidth / window.innerHeight;
+        const isMobile = aspect < 1;
+        let range = 6.5;
+        if (!isMobile) {
+            range = Math.min(range * aspect, 12);
+        }
         const wallHeight = 1000;
         const thickness = 1;
 
