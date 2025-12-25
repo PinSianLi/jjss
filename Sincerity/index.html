@@ -193,8 +193,8 @@
             }
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/cannon@0.6.2/build/cannon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" data-cfasync="false"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cannon@0.6.2/build/cannon.min.js" data-cfasync="false"></script>
 <meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
@@ -218,7 +218,34 @@
         </div>
     </div>
     <!-- 載入 CDN -->
-    <script type="module" src="../js/Sincerity.js" data-cfasync="false"></script>
+    <script>
+        window.addEventListener('load', function() {
+            console.log("網頁資源 (CSS/Images) 載入完畢");
+ 
+            // 1. 雙重檢查：確認 Three.js
+            // 如果 CDN 掛了，這裡可以攔截到
+            if (typeof THREE === 'undefined' && !document.querySelector('script[type="importmap"]')) {
+                // 如果沒用 importmap 且全域沒變數，報錯
+                console.warn("警告：全域 THREE 尚未偵測到，但若是使用 Module 模式可忽略此警告。");
+            }
+ 
+            // 2. 建立 script 標籤
+            const script = document.createElement('script');
+            script.type = 'module';
+            
+            // ★★★ 注意路徑：您上面寫的是 ../js/Sincerity.js
+            // 如果 index.html 和 js 資料夾在同一層，通常是 ./js/Sincerity.js
+            // 請確認您的 HTML 檔案位置。這裡我先照您的需求寫：
+            script.src = '../js/Sincerity.js'; // 建議用 ./ 除非您的 HTML 在子資料夾
+            
+            // 3. 加上 Cloudflare 免死金牌
+            script.setAttribute('data-cfasync', 'false');
+ 
+            // 4. 插入到 body 讓它開始執行
+            document.body.appendChild(script);
+            console.log("已注入 Sincerity.js，程式啟動！");
+        });
+    </script>
 </body>
   
 

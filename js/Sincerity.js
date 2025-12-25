@@ -425,4 +425,4 @@ class SincerityApp {
         this.renderer.render(this.scene, this.camera);
     }
 }
-window.addEventListener('DOMContentLoaded', () => { window.app = new SincerityApp(); });
+window.app = new SincerityApp();
