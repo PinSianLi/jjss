@@ -1,7 +1,7 @@
 
 // ================= app.js 內容 =================
 import RAPIER from 'https://cdn.skypack.dev/@dimforge/rapier3d-compat';
-class BwaBweiApp {
+class SincerityApp {
     constructor() {
         this.state = 'loading';
         this.chargeStartTime = 0;
@@ -425,4 +425,4 @@ class BwaBweiApp {
         this.renderer.render(this.scene, this.camera);
     }
 }
-window.addEventListener('DOMContentLoaded', () => { window.app = new BwaBweiApp(); });
+window.addEventListener('DOMContentLoaded', () => { window.app = new SincerityApp(); });
