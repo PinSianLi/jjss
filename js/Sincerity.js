@@ -163,7 +163,7 @@ class SincerityApp {
      */
     createBoundaries() {
         // 設定「供桌」的範圍大小 (半徑)
-        const range = 6.5;
+        const range = 6;
         const wallHeight = 1000;
         const thickness = 1;
 
@@ -478,10 +478,8 @@ window.addEventListener('resize', () => {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
     
-    // 更新渲染器大小 (使用 innerHeight 通常是準的，但在某些瀏覽器可能需要配合 CSS)
     this.renderer.setSize(window.innerWidth, window.innerHeight);
 
-    // ★★★ 強制修正相機位置 (RWD) ★★★
     if (this.hasPlayedIntro) {
         const targetPos = this.getResponsiveCameraPos(false);
         this.camera.position.copy(targetPos);
