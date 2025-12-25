@@ -495,7 +495,7 @@ class SincerityApp {
         } else {
             // 終點
             const targetZ = 40 * ratio * 0.6;
-            const targetY = 25 * ratio * 0.6; 
+            const targetY = 40 * ratio * 0.6; 
 
             return new THREE.Vector3(0, targetY, targetZ);
         }
