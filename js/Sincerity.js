@@ -22,6 +22,7 @@ class SincerityApp {
         this.initPhysicsGround();
         this.initUI();
         this.initAudio();
+        this.createBoundaries();
         this.createJiaoPair();
     }
     initThree() {
@@ -156,6 +157,52 @@ class SincerityApp {
         mesh.castShadow = true;
         mesh.receiveShadow = true;
         return mesh;
+    }
+    /**
+     * 投擲邊界
+     */
+    createBoundaries() {
+        // 設定「供桌」的範圍大小 (半徑)
+        const range = 8;
+        const wallHeight = 100;
+        const thickness = 1;
+
+        // 定義四面牆的位置 (前後左右)
+        // 這些牆只有物理碰撞體 (Collider)，沒有 Mesh，所以是「隱形」的
+        const walls = [
+            // 左牆
+            { x: -range, z: 0, w: thickness, d: range * 2 },
+            // 右牆
+            { x: range, z: 0, w: thickness, d: range * 2 },
+            // 上牆 (後方)
+            { x: 0, z: -range, w: range * 2, d: thickness },
+            // 下牆 (前方)
+            { x: 0, z: range, w: range * 2, d: thickness }
+        ];
+
+        walls.forEach(config => {
+            // 建立靜態剛體 (不會動的牆)
+            let bodyDesc = RAPIER.RigidBodyDesc.fixed()
+                .setTranslation(config.x, wallHeight / 2, config.z);
+            let body = this.world.createRigidBody(bodyDesc);
+
+            // 建立碰撞體 (長方體)
+            // 注意：Rapier 的參數是「半長/半寬/半高」
+            let colliderDesc = RAPIER.ColliderDesc.cuboid(
+                config.w / 2, 
+                wallHeight / 2, 
+                config.d / 2
+            );
+            
+            // 設定物理材質 (摩擦力與彈力)
+            // friction: 摩擦力 (0~1)，設大一點才不會滑太久
+            // restitution: 彈力 (0~1)，設小一點避免撞牆彈飛
+            colliderDesc.setFriction(0.5).setRestitution(0.2);
+            
+            this.world.createCollider(colliderDesc, body);
+        });
+        
+        console.log("🧱 隱形圍牆已建立");
     }
     createJiaoBody(mesh, position, rotationEuler) {
         let rigidBodyDesc = RAPIER.RigidBodyDesc.dynamic()
