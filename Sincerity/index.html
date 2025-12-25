@@ -6,7 +6,7 @@
   
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>誠心 - Sincerity</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,6 +32,16 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        body,
+        html {
+            width: 100%;
+            /* 使用 dvh (動態高度)，如果瀏覽器不支援則退回 vh */
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            /* 禁止捲動 */
         }
 
         body {
@@ -219,7 +229,7 @@
     </div>
     <!-- 載入 CDN -->
     <script>
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             if (typeof THREE === 'undefined' && !document.querySelector('script[type="importmap"]')) {
                 console.warn("警告：全域 THREE 尚未偵測到。");
             }

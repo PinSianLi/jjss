@@ -163,8 +163,8 @@ class SincerityApp {
      */
     createBoundaries() {
         // 設定「供桌」的範圍大小 (半徑)
-        const range = 8;
-        const wallHeight = 100;
+        const range = 6.5;
+        const wallHeight = 1000;
         const thickness = 1;
 
         // 定義四面牆的位置 (前後左右)
@@ -472,4 +472,21 @@ class SincerityApp {
         this.renderer.render(this.scene, this.camera);
     }
 }
+
+window.addEventListener('resize', () => {
+    // 更新相機
+    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.camera.updateProjectionMatrix();
+    
+    // 更新渲染器大小 (使用 innerHeight 通常是準的，但在某些瀏覽器可能需要配合 CSS)
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // ★★★ 強制修正相機位置 (RWD) ★★★
+    if (this.hasPlayedIntro) {
+        const targetPos = this.getResponsiveCameraPos(false);
+        this.camera.position.copy(targetPos);
+        this.camera.lookAt(0, 0, 0);
+    }
+});
+
 window.app = new SincerityApp();
